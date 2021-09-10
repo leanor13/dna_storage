@@ -1,1 +1,12 @@
-<h1> Home </h1>
+{% load static %}
+{% block content %}
+<h1> This is list of DNA storage items </h1>
+<div>
+    {% for sequence in sequences %}
+        <div class="sequencedisplay">
+            <h3> {{ sequence.name }}</h3>
+            <p> {{ sequence.sequence }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -10,3 +10,6 @@ class Sequence(models.Model):
     sequence = models.TextField(max_length=20000, blank=False)
     def __str__(self):
         return self.name
+
+    objects = models.Manager()
+
