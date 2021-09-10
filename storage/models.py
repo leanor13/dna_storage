@@ -8,3 +8,5 @@ class Sequence(models.Model):
     """
     name = models.CharField(max_length=100, blank=False)
     sequence = models.TextField(max_length=20000, blank=False)
+    def __str__(self):
+        return self.name
