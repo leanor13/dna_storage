@@ -1,4 +1,15 @@
 {
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "[jsonc]": {
+
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint_django"
+    ]
 }
