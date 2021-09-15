@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets,status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+import re
 
 from storage.serializers import SequenceSerializer
 from storage.models import Sequence
@@ -18,8 +19,14 @@ class SequenceViewSet(viewsets.ModelViewSet):
             'sequence' should have only ACTGactg symbols
         '''
         sequence = request.data.get('sequence')
-        for n in sequence:
-            if n not in ['A','C','T','G','a','c','t','g']:
-                return Response({'status': 'Failed', 'message': 'Sequence should contain only ACTG'})
+        name = request.data.get('name')
+ #       for n in sequence:
+ #           if n not in ['A','C','T','G','a','c','t','g']:
+ #               return Response({'status': 'Failed', 'message': 'Sequence should contain only ACTG'})
+        '''
+        Checking if Sequence consists of only ACTG using regular expressions
+        '''
+        if not re.match(r'^[ACTGactg]+', sequence):
+            return Response({'status': 'Failed', 'message': 'Sequence should contain only ACTG'})
         super().create(request, *args, **kwargs)
-        return Response({'status':'Ok', 'message':'Sequence uploaded successfully'})
+        return Response({'status':'Ok', 'message':f'Sequence {name} uploaded successfully'})
