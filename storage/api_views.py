@@ -2,8 +2,7 @@
 '''
 Questions: 
 1. How to add http response to status?
-2. What is the difference between JsonResponse and Response below? (from different packages)
-3. Get by name - ???
+2. What is the difference between JsonResponse and Response below? (from different packages) Which one is better?
 '''
 from django.db.models import query
 from django.http.response import JsonResponse
