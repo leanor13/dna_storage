@@ -5,7 +5,7 @@ from rest_framework import routers, urlpatterns
 from storage.views import SequenceViewSet
 
 router = routers.DefaultRouter()
-router.register(r'sequences', SequenceViewSet)
+router.register(r'seq', SequenceViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

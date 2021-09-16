@@ -5,4 +5,4 @@ from storage.models import Sequence
 class SequenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sequence
-        fields = ('name', 'sequence')
+        fields = ('id','name', 'sequence')
