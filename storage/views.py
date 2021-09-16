@@ -26,7 +26,18 @@ class SequenceViewSet(viewsets.ModelViewSet):
         '''
         Checking if Sequence consists of only ACTG using regular expressions
         '''
-        if not re.match(r'^[ACTGactg]+', sequence):
+        if not re.match(r'[ACTGactg]+$', sequence):
             return Response({'status': 'Failed', 'message': 'Sequence should contain only ACTG'})
         super().create(request, *args, **kwargs)
         return Response({'status':'Ok', 'message':f'Sequence {name} uploaded successfully'})
+
+    def update(self, request, *args, **kwargs):
+        sequence = request.data.get('sequence')
+        name = request.data.get('name')
+        '''
+        Checking if Sequence consists of only ACTG using regular expressions
+        '''
+        if not re.match(r'[ACTGactg]+$', sequence):
+            return Response({'status': 'Update failed', 'message': 'Sequence should contain only ACTG'})
+        super().update(request, *args, **kwargs)
+        return Response({'status':'Ok', 'message':f'Sequence {name} updated successfully'})
